@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mydesign.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.test.mydesign.pojo.Student">
+    <result column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Sex" jdbcType="BIT" property="sex" />
+    <result column="Identity" jdbcType="VARCHAR" property="identity" />
+    <result column="PhoneNumber" jdbcType="VARCHAR" property="phonenumber" />
+    <result column="Email" jdbcType="VARCHAR" property="email" />
+    <result column="EducationId" jdbcType="INTEGER" property="educationid" />
+    <result column="MajorId" jdbcType="INTEGER" property="majorid" />
+    <result column="Grade" jdbcType="INTEGER" property="grade" />
+    <result column="Nationality" jdbcType="VARCHAR" property="nationality" />
+    <result column="GraduationShcoolId" jdbcType="VARCHAR" property="graduationshcoolid" />
+    <result column="Resume" jdbcType="VARCHAR" property="resume" />
+    <result column="Account" jdbcType="VARCHAR" property="account" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="estimation3" jdbcType="VARCHAR" property="estimation3" />
+    <result column="estimation4" jdbcType="VARCHAR" property="estimation4" />
+  </resultMap>
+  <insert id="insert" parameterType="com.test.mydesign.pojo.Student">
+    insert into Students (Id, Name, Sex, Identity, 
+      PhoneNumber, Email, EducationId, 
+      MajorId, Grade, Nationality, 
+      GraduationShcoolId, Resume, Account, 
+      Password, estimation3, estimation4
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{identity,jdbcType=VARCHAR}, 
+      #{phonenumber,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{educationid,jdbcType=INTEGER}, 
+      #{majorid,jdbcType=INTEGER}, #{grade,jdbcType=INTEGER}, #{nationality,jdbcType=VARCHAR}, 
+      #{graduationshcoolid,jdbcType=VARCHAR}, #{resume,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{estimation3,jdbcType=VARCHAR}, #{estimation4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.mydesign.pojo.Student">
+    insert into Students
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="sex != null">
+        Sex,
+      </if>
+      <if test="identity != null">
+        Identity,
+      </if>
+      <if test="phonenumber != null">
+        PhoneNumber,
+      </if>
+      <if test="email != null">
+        Email,
+      </if>
+      <if test="educationid != null">
+        EducationId,
+      </if>
+      <if test="majorid != null">
+        MajorId,
+      </if>
+      <if test="grade != null">
+        Grade,
+      </if>
+      <if test="nationality != null">
+        Nationality,
+      </if>
+      <if test="graduationshcoolid != null">
+        GraduationShcoolId,
+      </if>
+      <if test="resume != null">
+        Resume,
+      </if>
+      <if test="account != null">
+        Account,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+      <if test="estimation3 != null">
+        estimation3,
+      </if>
+      <if test="estimation4 != null">
+        estimation4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null">
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="educationid != null">
+        #{educationid,jdbcType=INTEGER},
+      </if>
+      <if test="majorid != null">
+        #{majorid,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="nationality != null">
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationshcoolid != null">
+        #{graduationshcoolid,jdbcType=VARCHAR},
+      </if>
+      <if test="resume != null">
+        #{resume,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="estimation3 != null">
+        #{estimation3,jdbcType=VARCHAR},
+      </if>
+      <if test="estimation4 != null">
+        #{estimation4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="findStudentById" parameterType="Integer" resultMap="BaseResultMap">
+    select * from Students where Id =#{id}
+  </select>
+
+  <select id="findStudentByAccount" parameterType="String" resultMap="BaseResultMap">
+    select * from Students where Account =#{account}
+  </select>
+
+</mapper>

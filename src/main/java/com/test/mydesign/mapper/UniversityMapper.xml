@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mydesign.mapper.UniversityMapper">
+  <resultMap id="BaseResultMap" type="com.test.mydesign.pojo.University">
+    <result column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="IdCode" jdbcType="VARCHAR" property="idcode" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Administration" jdbcType="VARCHAR" property="administration" />
+    <result column="Location" jdbcType="VARCHAR" property="location" />
+    <result column="Levertype" jdbcType="VARCHAR" property="levertype" />
+    <result column="remorks" jdbcType="VARCHAR" property="remorks" />
+  </resultMap>
+  <insert id="insert" parameterType="com.test.mydesign.pojo.University">
+    insert into University (Id, IdCode, Name, 
+      Administration, Location, Levertype, 
+      remorks)
+    values (#{id,jdbcType=VARCHAR}, #{idcode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{administration,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{levertype,jdbcType=VARCHAR}, 
+      #{remorks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.test.mydesign.pojo.University">
+    insert into University
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="idcode != null">
+        IdCode,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="administration != null">
+        Administration,
+      </if>
+      <if test="location != null">
+        Location,
+      </if>
+      <if test="levertype != null">
+        Levertype,
+      </if>
+      <if test="remorks != null">
+        remorks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="idcode != null">
+        #{idcode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="administration != null">
+        #{administration,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="levertype != null">
+        #{levertype,jdbcType=VARCHAR},
+      </if>
+      <if test="remorks != null">
+        #{remorks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
